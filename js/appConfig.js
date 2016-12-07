@@ -45,7 +45,8 @@ module.exports = {
             MapCopyrightPlugin: require('../qwc2/QWC2Components/plugins/MapCopyright'),
             PrintPlugin: require('../qwc2/QWC2Components/plugins/Print'),
             HelpPlugin: require('../qwc2/QWC2Components/plugins/Help')(renderHelp),
-            DxfExportPlugin: require('../qwc2/QWC2Components/plugins/DxfExport')
+            DxfExportPlugin: require('../qwc2/QWC2Components/plugins/DxfExport'),
+            DrawPlugin: require('../qwc2/QWC2Components/plugins/Draw')
         },
         requires: {}
     }
