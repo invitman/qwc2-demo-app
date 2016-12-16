@@ -8,7 +8,7 @@ Quick Start
 -----------
 
 Clone the repository with the --recursive option to automatically clone submodules.
-* If you are a developer, use 
+* If you are a developer, use
 
         git clone --recursive https://github.com/qgis/qwc2-demo-app.git
 
@@ -183,7 +183,6 @@ When adding a translation, remember to add the corresponding entry to
 `supportedLocales` in `js/appConfig.js`.
 
 You can test a locale by adding the `locale` query parameter to the URL, i.e. `locale=de`.
-
 
 Deployment
 ----------
