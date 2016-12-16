@@ -48,5 +48,23 @@ module.exports = {
             DrawPlugin: require('../qwc2/QWC2Components/plugins/Draw')
         },
         requires: {}
-    }
+    },
+    supportedLocales: {
+         "it": {
+             code: "it-IT",
+             description: "Italiano"
+         },
+         "en": {
+            code: "en-US",
+            description: "English"
+         },
+         "fr": {
+           code: "fr-FR",
+           description: "Français"
+       },
+       "de": {
+           code: "de-DE",
+           description: "Deutsch"
+       }
+   }
 };
