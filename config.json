@@ -61,7 +61,7 @@
           }
         },
         {
-           "name": "Draw" 
+           "name": "Draw"
         },
         {
           "name": "Identify",
@@ -131,6 +131,13 @@
                 ]},
                 {"key": "Print", "icon": "img/print.svg"},
                 {"key": "Help", "icon": "img/info.svg"}
+<<<<<<< HEAD
+=======
+              ],
+              "toolbarItems": [
+                {"key": "Measure", "icon": "img/measure.svg"},
+                {"key": "Print", "icon": "img/print.svg"}
+>>>>>>> Update config with toolbar config and updated maptool keys
               ],
               "toolbarItems": [
                 {"key": "Measure", "mode": "LineString", "icon": "img/measure_line.svg"},
