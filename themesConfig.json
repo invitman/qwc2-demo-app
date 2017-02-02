@@ -2,6 +2,26 @@
   "themes": {
     "items": [
       {
+        "url": "https://kartor.kristianstad.se/fastighetsindelning/",
+        "attribution": "Kristianstad",
+        "format": "image/png;mode=8bit",
+        "default": true,
+        "scales": [200000, 80000, 40000, 20000, 10000, 8000, 6000, 4000, 2000, 1000, 500, 250, 100],
+        "backgroundLayers": [
+          {
+            "name": "Kristianstad",
+            "visibility": true
+          },
+          {
+            "name": "mapnik",
+            "printLayer": "osm_farbig",
+            "visibility": false
+          }
+        ],
+        "searchProviders": ["kristianstad"],
+        "additionalMouseCrs": ["EPSG:3008"]
+      },
+      {
         "url": "http://qwc2.sourcepole.ch/wms/wolfsburg/qwc2_demo",
         "attribution": "Stadt Wolfsburg",
         "attributionUrl": "https://geoportal.stadt.wolfsburg.de/",
@@ -103,6 +123,16 @@
         "type": "tileprovider",
         "source": "stamen",
         "provider": "Stamen.Toner"
+      },
+      {
+        "name": "Kristianstad",
+        "title": "Kristianstad",
+        "type": "wms",
+        "url": "https://kartor.kristianstad.se/turistkarta/",
+        "params": {
+          "LAYERS": "turistkarta",
+          "STYLES": "default"
+        }
       },
       {
         "name": "Gemeindegrenzen",

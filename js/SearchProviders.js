@@ -179,6 +179,50 @@ function geoAdminLocationSearchResults(obj)
 
 ////////////////////////////////////////////////////////////////////////////////
 
+function kristianstadSearch(text, searchOptions, dispatch) {
+    axios.get("http://qwc2.sourcepole.ch/api/proxy?url=https://kartor.kristianstad.se/sok/allting_sok_json.php?q="+ encodeURIComponent(text))
+    .then(response => dispatch(kristianstadSearchResults(response.data)));
+}
+
+function kristianstadSearchResults(obj)
+{
+    let categoryMap = {
+        Adress: "Adresser",
+        Fastighet: "Fastigheter"
+    };
+
+    let resultGroups = {};
+    (obj.features || []).map(f => {
+        if(resultGroups[f.properties.category] == undefined) {
+            resultGroups[f.properties.category] = {
+                id: f.properties.category,
+                title: categoryMap[f.properties.category] || f.properties.category,
+                items: []
+            }
+        }
+        let x = f.geometry.coordinates[0];
+        let y = f.geometry.coordinates[1];
+        let bbox = CoordinatesUtils.reprojectBbox([x,y,x,y], "EPSG:3008", "EPSG:4326");
+
+        resultGroups[f.properties.category].items.push({
+            id: f.properties.name,
+            text: f.properties.name,
+            x: x,
+            y: y,
+            crs: "EPSG:3008",
+            bbox: [x, y, x, y],
+            provider: "kristianstad"
+        });
+    });
+    let results = [];
+    for(let key in resultGroups) {
+        results.push(resultGroups[key]);
+    }
+    return searchResultLoaded({data: results}, true);
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
 function usterSearch(text, searchOptions, dispatch) {
     axios.get("https://webgis.uster.ch/wsgi/search.wsgi?&searchtables=&query="+ encodeURIComponent(text))
     .then(response => dispatch(usterSearchResults(response.data)));
@@ -347,6 +391,8 @@ module.exports = {
         onSearch: glarusSearch,
         getResultGeometry: glarusResultGeometry,
         getMoreResults: glarusMoreResults
-
+    },
+    "kristianstad": {
+        onSearch: kristianstadSearch
     }
 };
