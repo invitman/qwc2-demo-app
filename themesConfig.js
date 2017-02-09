@@ -219,7 +219,7 @@ function getTheme(configItem, resultItem) {
             visibleLayers.reverse();
 
             // print templates
-            var printTemplates = []; 
+            var printTemplates = [];
             if (capabilities.Capability.ComposerTemplates !== undefined) {
                 let templates = capabilities.Capability.ComposerTemplates.ComposerTemplate;
                 if(!templates.length) {
