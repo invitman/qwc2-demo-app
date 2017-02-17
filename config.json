@@ -86,7 +86,10 @@
           "name": "MapCopyright"
         },
         {
-          "name": "LayerTree"
+          "name": "LayerTree",
+          "cfg": {
+            "showLegendIcons": true
+          }
         },
         {
           "name": "DxfExport"
@@ -163,7 +166,10 @@
           "name": "ThemeSwitcher"
         },
         {
-          "name": "LayerTree"
+          "name": "LayerTree",
+          "cfg": {
+            "showLegendIcons": true
+          }
         },
         {
           "name": "Identify",

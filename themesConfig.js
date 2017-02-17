@@ -116,7 +116,27 @@ function getLayerTree(layer, resultLayers, visibleLayers, printLayers) {
                 layerEntry.attributionUrl = layer.Attribution.OnlineResource.$['xlink:href'];
             }
         }
-        layerEntry.opacity = 255;
+        if (layer.Abstract) {
+            layerEntry.abstract = layer.Abstract;
+        }
+        if(layer.DataURL && layer.DataURL.OnlineResource) {
+            layerEntry.dataUrl = layer.DataURL.OnlineResource.$['xlink:href'];
+        }
+        if(layer.MetadataURL && layer.MetadataURL.OnlineResource) {
+            layerEntry.metadataUrl = layer.MetadataURL.OnlineResource.$['xlink:href'];
+        }
+        if(layer.$.transparency) {
+            layerEntry.opacity = 255 - Math.floor(parseFloat(layer.$.transparency) / 100 * 255)
+        } else {
+            layerEntry.opacity = 255;
+        }
+        if(layer.KeywordList) {
+            var keywords = [];
+            toArray(layer.KeywordList.Keyword).map((entry) => {
+                keywords.push((typeof entry === 'object') ? entry._ : entry);
+            });
+            layerEntry.keywords = keywords.join(",");
+        }
         if (layer.MinScaleDenominator !== undefined) {
             layerEntry.minScale = parseInt(layer.MinScaleDenominator, 10);
             layerEntry.maxScale = parseInt(layer.MaxScaleDenominator, 10);
@@ -132,6 +152,7 @@ function getLayerTree(layer, resultLayers, visibleLayers, printLayers) {
     } else {
         // group
         layerEntry.sublayers = [];
+        layerEntry.expanded = true;
         for (var subLayer of toArray(layer.Layer)) {
             getLayerTree(subLayer, layerEntry.sublayers, visibleLayers, printLayers);
         }
@@ -247,6 +268,9 @@ function getTheme(configItem, resultItem) {
                 }
             }
 
+            // drawing order
+            let drawingOrder = capabilities.Capability.LayerDrawingOrder.split(",");
+
             // update theme config
             resultItem.id = themeId;
             resultItem.name = topLayer.Name;
@@ -258,21 +282,28 @@ function getTheme(configItem, resultItem) {
             resultItem.tiled = configItem.tiled;
             // use geographic bounding box for theme, as default CRS may have inverted axis order with WMS 1.3.0
             resultItem.crs = "EPSG:4326";
-            resultItem.extent = [
-                parseFloat(topLayer.EX_GeographicBoundingBox.westBoundLongitude),
-                parseFloat(topLayer.EX_GeographicBoundingBox.southBoundLatitude),
-                parseFloat(topLayer.EX_GeographicBoundingBox.eastBoundLongitude),
-                parseFloat(topLayer.EX_GeographicBoundingBox.northBoundLatitude)
-            ];
+            if(configItem.extent) {
+                resultItem.extent = configItem.extent;
+            } else {
+                resultItem.extent = [
+                    parseFloat(topLayer.EX_GeographicBoundingBox.westBoundLongitude),
+                    parseFloat(topLayer.EX_GeographicBoundingBox.southBoundLatitude),
+                    parseFloat(topLayer.EX_GeographicBoundingBox.eastBoundLongitude),
+                    parseFloat(topLayer.EX_GeographicBoundingBox.northBoundLatitude)
+                ];
+            }
             resultItem.scales = configItem.scales;
+            resultItem.printScales = configItem.printScales;
             // NOTE: skip root WMS layer
             resultItem.sublayers = layerTree[0].sublayers;
+            resultItem.expanded = true;
             resultItem.backgroundLayers = configItem.backgroundLayers;
             resultItem.searchProviders = configItem.searchProviders;
             resultItem.additionalMouseCrs = configItem.additionalMouseCrs;
             if (printTemplates.length > 0) {
                 resultItem.print = printTemplates;
             }
+            resultItem.drawingOrder = drawingOrder;
 
             // set default theme
             if (configItem.default || !result.themes.defaultTheme) {
@@ -327,6 +358,8 @@ function getGroupThemes(configGroup, resultGroup) {
           "attributionUrl": "<attribution URL>",      // optional theme attribution URL
           "default": true,                            // optional, set this as the initial theme
           "scales": [25000, 10000, 5000, 2500],       // optional custom map scales
+          "printScales":  [25000, 10000, 5000, 2500], // optional confined set of print scales. Freely choosable if not defined.
+          "extent": [xmin, ymin, xmax, ymax],         // optional custom extent which overrides extent from WMS capabilities
           "tiled": true,                              // optional, use tiled WMS (default is false)
           "format": "image/png",                      // optional, the image format to use in the WMS request, defaults to image/png
           "backgroundLayers": [                       // optional background layers
