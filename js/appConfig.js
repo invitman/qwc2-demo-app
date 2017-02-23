@@ -52,7 +52,8 @@ module.exports = {
             PrintPlugin: require('../qwc2/QWC2Components/plugins/Print'),
             HelpPlugin: require('../qwc2/QWC2Components/plugins/Help')(renderHelp),
             DxfExportPlugin: require('../qwc2/QWC2Components/plugins/DxfExport'),
-            DrawPlugin: require('../qwc2/QWC2Components/plugins/Draw')
+            DrawPlugin: require('../qwc2/QWC2Components/plugins/Draw'),
+            RasterExportPlugin: require('../qwc2/QWC2Components/plugins/RasterExport')
         },
         requires: {}
     },

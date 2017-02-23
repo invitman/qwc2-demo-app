@@ -2,7 +2,7 @@
   "themes": {
     "items": [
       {
-        "url": "https://kartor.kristianstad.se/fastighetsindelning/",
+        "url": "https://kartor.kristianstad.se/kkarta_invit/",
         "attribution": "Kristianstad",
         "format": "image/png;mode=8bit",
         "default": true,
@@ -62,7 +62,7 @@
             "title": "QWC2 Test",
             "url": "http://qwc2.sourcepole.ch/wms/themes/test",
             "attribution": "Demo attribution",
-            "attributionUrl": "https://qwc2.sourcepole.ch/",
+            "attributionUrl": "https://127.0.0.1/",
             "tiled": true,
             "backgroundLayers": [
               {
@@ -86,7 +86,18 @@
               }
             ],
             "searchProviders": ["coordinates", "geoadmin", "glarus"],
-            "additionalMouseCrs": ["EPSG:21781", "EPSG:2056"]
+            "additionalMouseCrs": ["EPSG:21781", "EPSG:2056"],
+            "printLabelForSearchResult": "test",
+            "watermark": {
+                "text": "Watermark Test",
+                "texpadding": "1",
+                "fontsize": "14",
+                "fontfamily": "sans",
+                "fontcolor": "#0000FF",
+                "backgroundcolor": "#FFFFFF",
+                "framecolor": "#000000",
+                "framewidth": 1
+            }
           }
         ],
         "groups": []
