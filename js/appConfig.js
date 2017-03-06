@@ -52,8 +52,8 @@ module.exports = {
             PrintPlugin: require('../qwc2/QWC2Components/plugins/Print'),
             HelpPlugin: require('../qwc2/QWC2Components/plugins/Help')(renderHelp),
             DxfExportPlugin: require('../qwc2/QWC2Components/plugins/DxfExport'),
-            DrawPlugin: require('../qwc2/QWC2Components/plugins/Draw'),
-            RasterExportPlugin: require('../qwc2/QWC2Components/plugins/RasterExport')
+            RasterExportPlugin: require('../qwc2/QWC2Components/plugins/RasterExport'),
+            DrawPlugin: require('../qwc2/QWC2Components/plugins/Draw')
         },
         requires: {}
     },
@@ -74,9 +74,9 @@ module.exports = {
            code: "de-DE",
            description: "Deutsch"
        },
-	   "sv": {
-           code: "sv-SE",
-           description: "Svenska"
-       }
+  	   "sv": {
+             code: "sv-SE",
+             description: "Svenska"
+         }
    }
 };

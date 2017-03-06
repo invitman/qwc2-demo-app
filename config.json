@@ -14,9 +14,7 @@
             "maxExtent": [
               -20037508.34, -20037508.34,
               20037508.34, 20037508.34
-            ],
-            "zoomControl": false,
-            "mapType": "openlayers"
+            ]
           }
         },
         {
@@ -97,6 +95,9 @@
         },
         {
           "name": "RasterExport"
+        },
+        {
+          "name": "Draw"
         }
       ],
       "desktop": [
@@ -107,9 +108,7 @@
             "maxExtent": [
               -20037508.34, -20037508.34,
               20037508.34, 20037508.34
-            ],
-            "zoomControl": false,
-            "mapType": "openlayers"
+            ]
           }
         },
         {
@@ -206,6 +205,9 @@
         },
         {
           "name": "RasterExport"
+        },
+        {
+          "name": "Draw"
         }
       ]
   }
