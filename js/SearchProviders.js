@@ -179,12 +179,12 @@ function geoAdminLocationSearchResults(obj, requestId)
 
 ////////////////////////////////////////////////////////////////////////////////
 
-function kristianstadSearch(text, searchOptions, dispatch) {
+function kristianstadSearch(text, requestId, searchOptions, dispatch) {
     axios.get("http://qwc2.sourcepole.ch/api/proxy?url=https://kartor.kristianstad.se/sok/allting_sok_json.php?q="+ encodeURIComponent(text))
-    .then(response => dispatch(kristianstadSearchResults(response.data)));
+    .then(response => dispatch(kristianstadSearchResults(response.data, requestId)));
 }
 
-function kristianstadSearchResults(obj)
+function kristianstadSearchResults(obj, requestId)
 {
     let categoryMap = {
         Adress: "Adresser",
@@ -218,7 +218,8 @@ function kristianstadSearchResults(obj)
     for(let key in resultGroups) {
         results.push(resultGroups[key]);
     }
-    return searchResultLoaded({data: results}, true);
+    
+    return addSearchResults({ data: results, provider: "kristianstad", reqId: requestId}, true);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
