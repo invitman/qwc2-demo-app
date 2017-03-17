@@ -51,6 +51,13 @@
       "transparency": "",
       "printlegend": ""
     },
+    "locate": {
+      "tooltip": "",
+      "metersUnit": "",
+      "feetUnit": "",
+      "popup": "",
+      "outsideMapBoundsMsg": ""
+    },
     "map": {
       "loading": "In caricamento..."
     },
@@ -83,6 +90,7 @@
       "directLinkTitle": "Con un Link diretto",
       "generatingpermalink": "",
       "msgToCopyUrl": "Clicca per copiare",
+      "msgCopiedUrl": "",
       "QRCodeLinkTitle": "Usando il QR Code",
       "socialIntro": "Sul tuo social preferito"
     },

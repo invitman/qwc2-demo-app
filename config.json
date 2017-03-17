@@ -5,23 +5,24 @@
   "assetsPath": "/assets",
   "urlPositionFormat": "extent",
   "urlPositionCrs": "",
+  "preserveExtentOnThemeSwitch": true,
+  "preserveBackgroundOnThemeSwitch": true,
   "plugins": {
       "mobile": [
         {
-          "name": "Map",
+          "name": "Map"
+        },
+        {
+          "name": "LocateButton",
           "cfg": {
-            "projection": "EPSG:3857",
-            "maxExtent": [
-              -20037508.34, -20037508.34,
-              20037508.34, 20037508.34
-            ]
+            "position": 1
           }
         },
         {
-          "name": "LocateButton"
-        },
-        {
-          "name": "BackgroundSwitcher"
+          "name": "BackgroundSwitcher",
+          "cfg": {
+            "position": 0
+          }
         },
         {
             "name": "TopBar",
@@ -38,11 +39,6 @@
                 ]},
                 {"key": "Print", "icon": "img/print.svg"},
                 {"key": "Help", "icon": "img/info.svg"}
-              ],
-              "toolbarItems": [
-                {"key": "Measure", "mode": "LineString", "icon": "img/measure_line.svg"},
-                {"key": "Measure", "mode": "Polygon", "icon": "img/measure_polygon.svg"},
-                {"key": "Print", "icon": "img/print.svg"}
               ],
               "searchOptions": {
                 "minScale": 1000,
@@ -102,26 +98,32 @@
       ],
       "desktop": [
         {
-          "name": "Map",
-          "cfg": {
-            "projection": "EPSG:3857",
-            "maxExtent": [
-              -20037508.34, -20037508.34,
-              20037508.34, 20037508.34
-            ]
-          }
+          "name": "Map"
         },
         {
           "name": "LocateButton"
+          ,
+          "cfg": {
+            "position": 3
+          }
         },
         {
-          "name": "ZoomIn"
+          "name": "ZoomIn",
+          "cfg": {
+            "position": 2
+          }
         },
         {
-          "name": "ZoomOut"
+          "name": "ZoomOut",
+          "cfg": {
+            "position": 1
+          }
         },
         {
-          "name": "BackgroundSwitcher"
+          "name": "BackgroundSwitcher",
+          "cfg": {
+            "position": 0
+          }
         },
         {
             "name": "TopBar",

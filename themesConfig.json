@@ -36,7 +36,9 @@
           }
         ],
         "searchProviders": ["coordinates", "wolfsburg"],
-        "additionalMouseCrs": ["EPSG:25832"]
+        "mapCrs": "EPSG:3857",
+        "additionalMouseCrs": ["EPSG:25832"],
+        "collapseLayerGroupsBelowLevel": 1
       },
       {
         "url": "http://qwc2.sourcepole.ch/wms/uster/bauprojekte",
@@ -44,6 +46,7 @@
         "attributionUrl": "https://gis.uster.ch/",
         "scales": [80000, 40000, 20000, 10000, 8000, 6000, 4000, 2000, 1000, 500, 250, 100],
         "printScales": [80000, 40000, 20000, 10000, 8000, 6000, 4000, 2000, 1000, 500, 250, 100],
+        "printResolutions": [150, 300, 600],
         "backgroundLayers": [
           {
             "name": "mapnik",
@@ -51,6 +54,7 @@
           }
         ],
         "searchProviders": ["coordinates", "uster"],
+        "mapCrs": "EPSG:3857",
         "additionalMouseCrs": ["EPSG:21781", "EPSG:2056"]
       }
     ],
@@ -86,18 +90,20 @@
               }
             ],
             "searchProviders": ["coordinates", "geoadmin", "glarus"],
+            "mapCrs": "EPSG:3857",
             "additionalMouseCrs": ["EPSG:21781", "EPSG:2056"],
             "printLabelForSearchResult": "test",
             "watermark": {
-                "text": "Watermark Test",
-                "texpadding": "1",
-                "fontsize": "14",
-                "fontfamily": "sans",
-                "fontcolor": "#0000FF",
-                "backgroundcolor": "#FFFFFF",
-                "framecolor": "#000000",
-                "framewidth": 1
-            }
+              "text": "Watermark Test",
+              "texpadding": "1",
+              "fontsize": "14",
+              "fontfamily": "sans",
+              "fontcolor": "#0000FF",
+              "backgroundcolor": "#FFFFFF",
+              "framecolor": "#000000",
+              "framewidth": 1
+            },
+            "skipEmptyFeatureAttributes": true
           }
         ],
         "groups": []
@@ -172,5 +178,6 @@
       }
     ]
   },
-  "defaultScales": [4000000, 2000000, 1000000, 400000, 200000, 80000, 40000, 20000, 10000, 8000, 6000, 4000, 2000, 1000, 500, 250, 100]
+  "defaultScales": [4000000, 2000000, 1000000, 400000, 200000, 80000, 40000, 20000, 10000, 8000, 6000, 4000, 2000, 1000, 500, 250, 100],
+  "defaultPrintGrid": [{"s": 10000, "x": 1000, "y": 1000}, {"s": 1000, "x": 100, "y": 100}, {"s": 100, "x": 10, "y": 10}]
 }

@@ -38,8 +38,9 @@ Configuration
 There are five main configuration files:
 
  * `js/appConfig.js`: This file configures which components and which map
- projections are compiled into the application bundle as well as the available
- locales. Changing this file will require a re-deployment of the application.
+ projections are compiled into the application bundle, the human readable labels
+ for the EPSG codes as well as the available locales.
+ Changing this file will require a re-deployment of the application.
 
  * `config.json`: This file controls the plugin configuration (whether they are
  enabled in desktop/mobile plus plugin specific configuration) and also stores
@@ -91,17 +92,26 @@ Configuration format:
         "attribution": "<Attribution>",             // optional theme attribution
         "attributionUrl": "<attribution URL>",      // optional theme attribution URL
         "default": true,                            // optional, set this as the initial theme
-        "scales": [25000, 10000, 5000, 2500],       // optional custom map scales
+        "scales": [25000, 10000, 5000, 2500],       // optional, custom map scales, defaults to defaultScales (see below)
+        "printScales": [25000, 10000, 5000, 2500],  // optional, confined list of available print scales, defaults to defaultPrintScales (see below)
+        "printResolutions": [150, 300, 600],        // optional, confined list of abailable print resolutions, defaults to defaultPrintResolutions (see below)
+        "printGrid": [                              // optional, list of grid intervals to use for various scales when printing.
+            {"s": 10000, x: 1000, y: 1000},         //   Keep this list sorted in descending order by scale (s)
+            {"s": 1000, x: 100, y: 100},            //   In this example, {x: 100, y: 100} will be used for 1000 <= scale < 10000
+            ...                                     //   If not specified, defaultPrintGrid will be usd (see below)
+        ],
+        "extent": [xmin, ymin, xmax, ymax],         // optional custom extent which overrides extent from WMS capabilities
         "tiled": true,                              // optional, use tiled WMS (default is false)
         "format": "image/png",                      // optional, the image format to use in the WMS request, defaults to image/png
         "backgroundLayers": [                       // optional background layers
           {
             "name": "<background layer name>",      // background layer name from list below
-            "printLayer": "<WMS layer name>",       // optional equivalent WMS layer name for printing
+            "printLayer": "<qgis layer name>",      // optional, name of a qgis layer to use as equivalent background layer when printing
             "visibility": true                      // optional initial visibility on topic selection
           }
         ],
         "searchProviders": ["<search provider>"],   // optional search providers
+        "mapCrs: "EPSG:3857",                       // optional, the map projection, defaults to EPSG:3857
         "additionalMouseCrs": ["<epsg code>"]       // optional list of additional CRS for mouse position (map projection and WGS84 are listed by default). Make sure proj defs are loaded in js/appConfig.js.
         "printLabelForSearchResult": "<labelid>"    // optional, a labelid in the print composition where to insert the label of the selected search result
         "watermark": {                              // optional, configuration of watermark to place on raster-export images
@@ -113,7 +123,9 @@ Configuration format:
           "backgroundcolor": "#FFFFFF",             // optional, background color of the frame
           "framecolor": "#000000",                  // optional, color of the frame border
           "framewidth": 1                           // optional, width of the frame border, in pixels
-        }
+        },
+        "collapseLayerGroupsBelowLevel": <level>    // optional, layer tree level below which to initially collapse groups. If unspecified, groups are not initially collapsed.
+        "skipEmptyFeatureAttributes": true          // optional, whether to skip empty feature attributes in the identify results. Default is false.
       }
     ],
     "groups": [                                     // optional, nested groups
@@ -138,7 +150,10 @@ Configuration format:
       }
     ]
   },
-  "defaultScales": [50000, 25000, 10000, 5000]      // optional default map scales
+  "defaultScales": [50000, 25000, 10000, 5000],     // required, default map scales
+  "defaultPrintScales": [50000, 25000, 10000, 5000],// optional, confined list of available print scales. If not specified, scale is freely choosable.
+  "defaultPrintResolutions": [150, 300, 600],       // optional, confined list of abailable print resolutions. If not specified, resolution is freely choosable.
+  "defaultPrintGrid": [<as printGrid above>]        // optional, list of grid intervals to use for various scales when printing, no grid is primted if omitted
 }
 ```
 

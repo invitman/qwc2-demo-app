@@ -32,7 +32,7 @@
     },
     "identifyTitle": "Objektinformationen",
     "identify": {
-      "querying": "Abfragen"
+      "querying": "Objekte werden abgefragt..."
     },
     "identifyregion": {
       "info": "Polygon um die zu identifizierende Objekte zeichnen"
@@ -50,6 +50,13 @@
       "maptip": "Kartentips anzeigen",
       "transparency": "Transparenz",
       "printlegend": "Legende drucken"
+    },
+    "locate": {
+      "tooltip": "Meine Position",
+      "metersUnit": "Meter",
+      "feetUnit": "Fuss",
+      "popup": "Die Position liegt in einem Radius von {distance} {unit} von diesem Punkt",
+      "outsideMapBoundsMsg": "Die Position schient ausserhalb der Grenze der Karte zu liegen"
     },
     "map": {
       "loading": "Karte wird geladen"
@@ -83,6 +90,7 @@
       "directLinkTitle": "Über einen direkten Link",
       "generatingpermalink": "Permalink wird erzeugt",
       "msgToCopyUrl": "Kopieren in Zwischenablage",
+      "msgCopiedUrl": "Kopiert",
       "QRCodeLinkTitle": "QR Code (Smartphone)",
       "socialIntro": "In den sozialen Medien"
     },

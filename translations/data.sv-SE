@@ -51,6 +51,13 @@
       "transparency": "Transparens",
       "printlegend": ""
     },
+    "locate": {
+      "tooltip": "",
+      "metersUnit": "",
+      "feetUnit": "",
+      "popup": "",
+      "outsideMapBoundsMsg": ""
+    },
     "map": {
       "loading": "Laddar..."
     },
@@ -83,6 +90,7 @@
       "directLinkTitle": "Via en direktlänk",
       "generatingpermalink": "Genererar permalink...",
       "msgToCopyUrl": "Klicka för att kopiera",
+      "msgCopiedUrl": "",
       "QRCodeLinkTitle": "qr kod",
       "socialIntro": "I ditt favoritnätverk"
     },

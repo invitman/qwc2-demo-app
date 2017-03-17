@@ -41,6 +41,15 @@ v0.3 (XXX XX 2017):
 - Add draw component
 - Move various scripts to qwc2/scripts
 - Allow selectively overriding translation strings while importing the rest from the qwc2/translations
+- Map projections are now set individually for each theme
+- Add preserveExtentOnThemeSwitch and preserveBackgroundOnThemeSwitch to config.json to control whether extent / background layer should be preserved (if possible) on theme switch
+- Make identify results dialog resizeable
+- Insert anchor tags for urls / email addresses in feature attributes
+- Allow configuring grid interval for print output
+- Allow specifying human readable labels for the CRS EPSG codes in js/appConfig.js
+- Allow limiting available resolutions for printing
+- Add per-theme "collapseLayerGroupsBelowLevel" setting to control level below which layer groups are collapsed by default in the layer tree
+- Add per-theme "skipEmptyFeatureAttributes" setting to control whether empty/NULL attributes should be skipped in the feature info table
 
 **Incompatible changes**:
 - Keys of TopBar menuItems in config.js have been renamed
@@ -60,6 +69,8 @@ v0.3 (XXX XX 2017):
 
 - Various scripts have been moved to qwc2/scripts. The "scripts" section of package.json has been adapted to use these.
 - The translations/updateTranslations.py was removed in favour of qwc2/scripts/updateTranslations.js, the translation  languages now need to be specified in translations/tsconfig.json along with application specific message ids. Consult the README for more details.
+- Map projections are now set individually for each theme via the mapCrs entry. If unset, it will default to EPSG:3857.
+- The defaultScales list in themesConfig.json is now required
 
 
 v0.2 (Jan 03 2017):
