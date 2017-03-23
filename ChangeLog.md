@@ -50,6 +50,7 @@ v0.3 (XXX XX 2017):
 - Allow limiting available resolutions for printing
 - Add per-theme "collapseLayerGroupsBelowLevel" setting to control level below which layer groups are collapsed by default in the layer tree
 - Add per-theme "skipEmptyFeatureAttributes" setting to control whether empty/NULL attributes should be skipped in the feature info table
+- Add optional label attribute to search result items to display in map on select (defaults to item text)
 
 **Incompatible changes**:
 - Keys of TopBar menuItems in config.js have been renamed
@@ -71,6 +72,10 @@ v0.3 (XXX XX 2017):
 - The translations/updateTranslations.py was removed in favour of qwc2/scripts/updateTranslations.js, the translation  languages now need to be specified in translations/tsconfig.json along with application specific message ids. Consult the README for more details.
 - Map projections are now set individually for each theme via the mapCrs entry. If unset, it will default to EPSG:3857.
 - The defaultScales list in themesConfig.json is now required
+- The locale definitions under `supportedLocales` in `appConfig.js` must provide a localeData field
+
+        localeData: require('react-intl/locale-data/<lang>')
+
 
 
 v0.2 (Jan 03 2017):
