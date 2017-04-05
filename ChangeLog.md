@@ -51,6 +51,9 @@ v0.3 (XXX XX 2017):
 - Add per-theme "collapseLayerGroupsBelowLevel" setting to control level below which layer groups are collapsed by default in the layer tree
 - Add per-theme "skipEmptyFeatureAttributes" setting to control whether empty/NULL attributes should be skipped in the feature info table
 - Add optional label attribute to search result items to display in map on select (defaults to item text)
+- Added LayerTree config properties: showRootEntry, showQueryableIcon, allowMapTips
+- Use assets/templates/legendprint.html as a template for the map legend print.
+- Added LayerTree groupTogglesSublayers config property to control whether toggling a group toggles just the group or also all the sublayers
 
 **Incompatible changes**:
 - Keys of TopBar menuItems in config.js have been renamed
@@ -76,6 +79,7 @@ v0.3 (XXX XX 2017):
 
         localeData: require('react-intl/locale-data/<lang>')
 
+- The print legend functionality requires a assets/templates/legendprint.html file with an element with id="legendcontainer", which will contain the legend graphics. The HTML document title of this template **may** influence the suggested output name when printing to a file (depending on the browser).
 
 
 v0.2 (Jan 03 2017):
