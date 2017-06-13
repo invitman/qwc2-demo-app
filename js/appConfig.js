@@ -20,7 +20,9 @@ Proj4js.defs("EPSG:3006", "+proj=utm +zone=33 +ellps=GRS80 +towgs84=0,0,0,0,0,0,
 CoordinatesUtils.setCrsLabels({
     "EPSG:21781": "CH1903 / LV03",
     "EPSG:2056": "CH1903+ / LV95",
-    "EPSG:25832": "ETRS89 / UTM 32N"
+    "EPSG:25832": "ETRS89 / UTM 32N",
+	"EPSG:3008": "SWEREF99 1330",
+	"EPSG:3006": "SWEREF99 TM"
 });
 
 module.exports = {
