@@ -109,7 +109,7 @@ Configuration format:
         }
         "extent": [xmin, ymin, xmax, ymax],         // optional custom extent which overrides extent from WMS capabilities
         "tiled": true,                              // optional, use tiled WMS (default is false)
-        "format": "image/png",                      // optional, the image format to use in the WMS request, defaults to image/png
+        "format": "image/png",                      // optional, the image format to use in the WMS request, defaults to image/png; other possible values "image/jpeg" or "image/png; mode=8bit" (1 bit or 16 bit modes also available for png)
         "backgroundLayers": [                       // optional background layers
           {
             "name": "<background layer name>",      // background layer name from list below
@@ -193,6 +193,11 @@ If `urlPositionCrs` is equal to the map projection, the `crs` parameter is
 omitted in the URL, but it can be manually added to the URL to specify the initial
 extent/center in a desired CRS.
 
+#Toggle on/off groups sublayers
+In `config.json` by changing the boolean value of the `groupTogglesSublayers` option
+under the `LayerTree`, you can configure the wanted behavior, for mobile and for
+desktop.
+
 ### Server
 
 A server component is necessary for generating and resolving permalinks.
@@ -215,6 +220,9 @@ you must list the message ids in the `strings` section of `translations/tsconfig
 analogously to `qwc2/translations/tsconfig.json`.
 
 You can test a locale by adding the `locale` query parameter to the URL, i.e. `locale=de`.
+
+You can also override the locale in `config.json` via the `locale` setting.
+
 
 Deployment
 ----------

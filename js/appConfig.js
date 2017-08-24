@@ -87,6 +87,11 @@ module.exports = {
             description: "Deutsch",
             localeData: require('react-intl/locale-data/de')
         },
+        "ro": {
+            code: "ro-RO",
+            description: "Română",
+            localeData: require('react-intl/locale-data/ro')
+        },
         "sv": {
             code: "sv-SE",
             description: "Svenska",
